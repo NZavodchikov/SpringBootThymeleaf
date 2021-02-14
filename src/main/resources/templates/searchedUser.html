@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Searched User</title>
+</head>
+<body>
+<form action="#" th:action="@{/searchByName}" th:object="${searchUser}" method="post">
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td><input type="text" th:field="*{firstName}" /></td>
+            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name error</td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><input type="text" th:field="*{lastName}" /></td>
+            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name error</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Search</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
