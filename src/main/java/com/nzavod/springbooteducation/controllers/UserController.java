@@ -102,14 +102,18 @@ public class UserController {
             return "userNotFound";
         }
         address  = user.getEmail();
-        UserData data = new UserData();
-        UserAgent userAgent = UserAgent.parseUserAgentString(httpServletRequest.getHeader("User-Agent"));
-        data.setBrowser(userAgent.getBrowser().getName());
-        data.setDate(new Date().toString());
+        UserData data = infoAboutUser(httpServletRequest);
         model.addAttribute("userdata", data);
         model.addAttribute("foundUser", user);
         model.addAttribute("email", new Email());
 
         return "userFound";
+    }
+    private UserData infoAboutUser(HttpServletRequest httpServletRequest){
+        UserData data = new UserData();
+        UserAgent userAgent = UserAgent.parseUserAgentString(httpServletRequest.getHeader("User-Agent"));
+        data.setBrowser(userAgent.getBrowser().getName());
+        data.setDate(new Date().toString());
+        return  data;
     }
 }
