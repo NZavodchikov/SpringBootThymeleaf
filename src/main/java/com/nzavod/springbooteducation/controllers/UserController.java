@@ -102,8 +102,7 @@ public class UserController {
             return "userNotFound";
         }
         address  = user.getEmail();
-        UserData data = infoAboutUser(httpServletRequest);
-        model.addAttribute("userdata", data);
+        model.addAttribute("userdata", infoAboutUser(httpServletRequest));
         model.addAttribute("foundUser", user);
         model.addAttribute("email", new Email());
 
